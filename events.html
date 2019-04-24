@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery Events</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+    .highlighted {
+        background: red;
+    }
+
+    .box {
+        border: 1px solid gray;
+        font-size: 14pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+        min-height: 200px;
+        width: 300px;
+    }
+
+    .box p {
+        margin: 0 1pt 0 2pt;
+    }
+    </style>
+</head>
+<body>
+    <div id="evtTarget" class="box">
+        This is some text.
+    </div>
+    <input type="text" id="textEntry">
+    <p>Last character typed: <span id="keyPress"></span></p>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            //on method
+            $("#evtTarget").on("mouseover mouseleave",(e) => {
+                $("#evtTarget").toggleClass("highlighted")
+            })
+        })
+
+        $("#evtTarget").on("click",(e) => {
+            $("#evtTarget").off("mouseover mouseleave")
+        })
+
+        $("#textEntry").on("keypress",(e) => {
+            $("#keyPress").text(String.fromCharCode(e.CharCode))
+        })
+    </script>
+</body>
+</html>

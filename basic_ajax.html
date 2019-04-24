@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic AJAX Demo</title>
+    <style>
+    html,pre {
+        font-family: sans-serif;
+    }
+
+    body {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    pre {
+        line-height: 1.5;
+        letter-spacing: 0.05rem;
+        padding: 1rem;
+        background: white;
+    }
+    label {
+        width: 200px;
+        padding: 5px;
+    }
+    select {
+        width: 350px;
+        padding: 5px;
+    }
+    </style>
+</head>
+<body>
+    <h1>AJAX</h1>
+    <form>
+        <label for="verse-choose">Choose A Verse</label>
+        <select name="verse-choose" id="verse-choose">
+            <option>Verse 1</option>
+            <option>Verse 2</option>
+            <option>Verse 3</option>
+            <option>Verse 4</option>
+        </select>
+        <pre></pre>
+    </form>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+    const verseChoose = document.querySelector("select")
+    const poemDisplay = document.querySelector("pre")
+
+    //AJAX using Fetch API
+    // function updateDisplay(verse) {
+    //     verse = verse.replace(" ","")
+    //     verse = verse.toLowerCase()
+    //     var url = verse + ".txt"
+
+    //     fetch(url).then((res) => {
+    //         if(res.ok) {
+    //             res.text().then((data) => {
+    //                 poemDisplay.innerHTML = data
+    //             })
+    //         } else {
+    //             console.log("Cannot connect to server!")
+    //         }
+    //     })
+    // }
+
+    //AJAX using JQuery
+    function updateDisplay(verse) {
+        verse = verse.replace(" ","").toLowerCase()
+        $("pre").load(verse + ".txt")
+    }
+    
+    verseChoose.value = "Verse 1"
+    if(verseChoose !== "") {
+        updateDisplay("Verse 1")
+    }
+
+    verseChoose.onchange = (e) => {
+        e.preventDefault()
+        updateDisplay(e.target.value)
+    }
+
+    </script>
+</body>
+</html>

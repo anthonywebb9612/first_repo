@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery Selectors</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="content">
+        <div id="example">
+            <p class="a">This is paragraph 1</p>
+            <p id="para2">This is paragraph 2</p>
+            <p class="b">This is paragraph 3</p>
+            <p id="para4">This is paragraph 4</p>
+            <p id="para5">This is paragraph 5</p>
+        </div>
+        <div>
+            <button id="create">Create Content</button>
+            <button id="change">Change Content</button>
+            <button id="changeAll">Change All</button>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        //Basic Selectors
+        // $("p").css("border","1px solid red")
+        // $(".a").css("border","1px solid red")
+        // $("p.b").css("border","1px solid red")
+
+        //Basic Filters
+        // $("#example p:first").css("border","1px solid red")
+        // $("#example p:last").css("border","1px solid red")
+        // $("#example p:even").css("border","1px solid red")
+        // $("#example p:odd").css("border","1px solid red")
+
+        // $("div > p").css("border","1px solid red")
+
+        //Attribute Filters
+        // $("p[class]").css("border","2px solid red")
+        // $("p[class=a]").css("border","2px solid red")
+        // $("p[id^=para]").css("border","2px solid red")
+        // $("p:contains(3)").css("border","2px solid red")
+
+        // margin += 10
+        // border += 2
+
+        document.querySelector("#create").addEventListener("click",() => {
+            createContent()
+        })
+
+        document.querySelector("#change").addEventListener("click",() => {
+            changeContent()
+        })
+
+        document.querySelector("#changeAll").addEventListener("click",() => {
+            changeAllContent()
+        })
+
+        const createContent = () => {
+            $("#example").html("<p>This is some text</p>")
+        }
+        
+        const changeContent = () => {
+            const newText = "<p>Some more text.</p>"
+            $("para2").html(newText)
+        }
+
+        const changeAllContent = () => {
+            $("#example p").text("Keep p tags, but change the text!")
+        }
+
+        // //Append Method
+        // $("example p").append("with some appended text!")
+
+        // //Prepend Method
+        // $("#example p").prepend("Hello, ")
+
+        // //After Method
+        // $("#example p").after("<p>-----------------</p>")
+
+        // //Before Method
+        // $("#example p").before("<p>*****************</p>")
+
+        // //Remove Method
+        // $("#example p.a, #example p.b").remove()
+
+    </script>
+</body>
+</html>

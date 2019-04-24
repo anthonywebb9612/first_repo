@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Attributes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        img {
+            margin: 20px;
+            width: 400px;
+            height: 400px;
+        }    
+    </style>
+</head>
+<body>
+    <div id="example">
+        <a href="images/grass.jpg">
+            <img src="images/grass.jpg" alt="grass"></a>
+        <a href="images/leaf.jpg">
+            <img src="images/leaf.jpg" alt="leaf"></a>
+        <a href="images/spring..jpg">
+            <img src="images/spring.jpg" alt="spring."></a>
+        <a href="images/water.jpg">
+            <img src="images/water.jpg" alt="waters"></a>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            //Attr method
+            $("a").attr("title","Photo by some photographer")
+            $("a").attr("target","_blank")
+            // $("a").removeAttr("href")
+            $("img").attr({
+                src: "images/spring.jpg",
+                title: "Spring is here!"
+            })
+        })
+    </script>
+</body>
+</html>

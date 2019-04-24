@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery CSS Properties</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .pClass {
+            color: green;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="example">
+            <p class="a">This is paragraph 1</p>
+            <p id="para2">This is paragraph 2</p>
+            <p class="b">This is paragraph 3</p>
+            <p id="para4">This is paragraph 4</p>
+            <p id="para5">This is paragraph 5</p>
+        </div>
+        <div>
+            <button id="setProp">Set Property</button>
+            <button id="setProps">Set Properties</button>
+            <button id="addCl">AddClass</button>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $("#setProp").on("click",(e) => {
+                $("#example p").css("text-shadow","0 0 5px red").css("font-size","+=1pt")
+            })
+
+            $("#setProps").on("click",(e) => {
+                $("#example p").css({
+                    "font-size": "24pt",
+                    "color": "blue",
+                    "text-decoration": "underline"
+                })
+            })
+
+            $("#addCl").on("click",(e) => {
+                $("#example p").addClass("animated rubberBand").one("animationend",() => {
+                    $("example p").removeClass("rubberBand")
+                })
+            })
+        })
+    </script>
+</body>
+</html>
